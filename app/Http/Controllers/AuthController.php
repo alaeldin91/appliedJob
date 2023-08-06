@@ -39,7 +39,6 @@ class AuthController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => $request->password,
-<<<<<<< HEAD
                 'mobileNumber' => $request->mobileNumber
 
             ]);
@@ -49,16 +48,13 @@ class AuthController extends Controller
 
             return response()->json(['message' => 'user Registered Successfully', 'user' => $user]);
         } catch (\Throwable $th) {
-=======
-                'mobileNumber'=>$request->mobileNumber
 
-            ]);
+            
 
            return response()->json(['message' => 'user Registered Successfully', 'user' => $user]);
         } 
         
         catch (\Throwable $th) {
->>>>>>> 593b3a4949249cd5ee8d6743c5cfb750ac92efd5
 
             return response()->json(['status' => false, 'message' 
                                     => $th->getMessage()], 500);
@@ -97,20 +93,16 @@ class AuthController extends Controller
             }
 
             $user = User::where('email', $request->email)
-<<<<<<< HEAD
                 ->first();
 
-=======
-              ->first();
+             
             
->>>>>>> 593b3a4949249cd5ee8d6743c5cfb750ac92efd5
             return response()->json([
                 'status' => true,
                 'message' => 'User Logged In Successfully',
                 'token' => $user->createToken("API TOKEN")
                     ->plainTextToken, 'user' => $user
             ], 200);
-<<<<<<< HEAD
         } catch (\Throwable $th) {
 
             return response()->json(['status' => false, 'message' => $th->getMessage()], 500);
@@ -126,15 +118,7 @@ class AuthController extends Controller
 
             return response()->json(['message' => $th->getMessage()], 500);
         }
-=======
-        }
-        
-        catch (\Throwable $th) {
-    
-            return response()->json(['status' => false, 'message' 
-                                    => $th->getMessage()], 
-                                    500);
-        }
+       
     }
         
     
@@ -164,38 +148,9 @@ class AuthController extends Controller
                         ->orWhere('description','like',"%$keyWord%");
                 });
              }
->>>>>>> 593b3a4949249cd5ee8d6743c5cfb750ac92efd5
     }
 
-    public function searchUser(Request $request)
-    {
-
-<<<<<<< HEAD
-        $query = User::query();
-
-        /**
-         * Filtering base Price 
-         */
-
-        $email = $request->input('email');
-
-        if ($email !== null) {
-
-            $query->where('email', '>=', $email);
-        }
-
-        // Searching based on keyword
-        $keyWord = $request->input('keyword');
-
-        if ($keyWord !== null) {
-
-            $query->where(function ($query) use ($keyWord) {
-
-                $query->where('name', 'like', "%$keyWord%")->orWhere('description', 'like', "%$keyWord%");
-            });
-        }
-    }
-
+   
     /**
      * function get All Users
      */
@@ -214,6 +169,4 @@ class AuthController extends Controller
             return response()->json(['message' => 'Failed to Get All Users. Please try again later.'], 500);
         }
     }
-=======
->>>>>>> 593b3a4949249cd5ee8d6743c5cfb750ac92efd5
 }

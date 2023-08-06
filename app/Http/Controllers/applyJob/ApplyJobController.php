@@ -16,7 +16,7 @@ class ApplyJobController extends Controller
            // $destinationPath = 'uploads';
 
             //$requestapplication->file('image')->move($destinationPath,
-                                                      $requestapplication->file('file')
+                                                     // $requestapplication->file('file')
         
             //->getClientOriginalName());
             
